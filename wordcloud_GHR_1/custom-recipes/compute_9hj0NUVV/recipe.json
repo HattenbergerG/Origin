@@ -1,0 +1,83 @@
+// This file is the descriptor for the Custom code recipe compute_9hj0NUVV
+{
+    // Meta data for display purposes
+    "meta" : {
+        "label" : "Custom recipe from recipe compute_9hj0NUVV",
+        "description" : "Custom recipe",
+        "icon" : "icon-puzzle-piece"
+    },
+
+    "kind" : "PYTHON",
+    
+
+    // Inputs and outputs are defined by roles. In the recipe's I/O tab, the user can associate one
+    // or more dataset to each input and output role.
+
+    // The "arity" field indicates whether the user can associate several datasets to the role ('NARY')
+    // or at most one ('UNARY'). The "required" field indicates whether the user is allowed to
+    // associate no dataset with the role.
+
+    "inputRoles" : [
+        {
+            "name": "input_dataset",
+            "label": "input displayed name",
+            "description": "what input A means",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+        // ...
+    ],
+
+    "outputRoles" : [
+        {
+            "name": "output_folder",
+            "label": "main output displayed name",
+            "description": "what main output means",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": false,
+            "acceptsManagedFolder": true
+        }
+    ],
+
+    // The field "params" holds a list of all the params
+    // for wich the user will be prompted for values in the Settings tab of the recipe.
+
+    // The available parameter types are:
+    // STRING, INT, DOUBLE, BOOLEAN, PASSWORD, SELECT, MAP, COLUMN, COLUMNS, TEXTAREA
+
+    "params": [
+       
+        // A 'COLUMN' parameter is a string, whose value is a column name from an input schema.
+        // To specify the input schema whose column names are used, use the "columnRole" field like below.
+        // The column names will come from the schema of the first dataset associated to that role.
+        {
+            "name": "text_column",
+            "label":"column of text",
+            "type": "COLUMN",
+            "columnRole": "input_dataset"
+        },
+        
+         {
+            "name": "static_insight_id",
+            "label":"static insight name",
+            "type": "STRING",
+            "description" : "The name of the static insight",
+            "mandatory": true
+        }
+        
+        
+
+        // The 'COLUMNS' type works in the same way, except that it is a list of strings.
+    ],
+
+    // The field "resourceKeys" holds a list of keys that allows to limit the number
+    // of concurrent executions and activities triggered by this recipe.
+    //
+    // Administrators can configure the limit per resource key in the Administration > Settings > Flow build
+    // screen.
+
+    "resourceKeys" : []
+
+}
